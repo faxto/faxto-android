@@ -78,18 +78,28 @@ public class AccountApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://fax.to/api/v1*
+All URIs are relative to *https://fax.to/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountApi* | [**balanceGet**](docs/AccountApi.md#balanceGet) | **GET** /balance | 
+*CountryApi* | [**areacodesCountryCodeStateIdGet**](docs/CountryApi.md#areacodesCountryCodeStateIdGet) | **GET** /areacodes/{countryCode}/{stateId} | 
+*CountryApi* | [**countriesCountryCodeDidgroupsGet**](docs/CountryApi.md#countriesCountryCodeDidgroupsGet) | **GET** /countries/{countryCode}/didgroups | 
+*CountryApi* | [**countriesDidgroupsDidGroupIdProvisionPost**](docs/CountryApi.md#countriesDidgroupsDidGroupIdProvisionPost) | **POST** /countries/didgroups/{didGroupId}/provision | 
+*CountryApi* | [**countriesGet**](docs/CountryApi.md#countriesGet) | **GET** /countries | 
+*CountryApi* | [**statesCountryCodeGet**](docs/CountryApi.md#statesCountryCodeGet) | **GET** /states/{countryCode} | 
 *FaxApi* | [**faxDocumentIdCostsGet**](docs/FaxApi.md#faxDocumentIdCostsGet) | **GET** /fax/{document_id}/costs | 
-*FaxApi* | [**faxHistoryGet**](docs/FaxApi.md#faxHistoryGet) | **GET** /fax-history | 
+*FaxApi* | [**faxGet**](docs/FaxApi.md#faxGet) | **GET** /fax | 
 *FaxApi* | [**faxJobIdStatusGet**](docs/FaxApi.md#faxJobIdStatusGet) | **GET** /fax/{job_id}/status | 
-*FaxApi* | [**faxPost**](docs/FaxApi.md#faxPost) | **POST** /fax | 
+*FaxApi* | [**incomingFaxesGet**](docs/FaxApi.md#incomingFaxesGet) | **GET** /incoming-faxes | 
+*FaxApi* | [**incomingFaxesNumberGet**](docs/FaxApi.md#incomingFaxesNumberGet) | **GET** /incoming-faxes/{number} | 
+*FaxApi* | [**provisionNumbersGet**](docs/FaxApi.md#provisionNumbersGet) | **GET** /provision-numbers | 
+*FilesApi* | [**fileCleanGet**](docs/FilesApi.md#fileCleanGet) | **GET** /file-clean | 
+*FilesApi* | [**fileGeneratePreviewGet**](docs/FilesApi.md#fileGeneratePreviewGet) | **GET** /file-generate-preview | 
 *FilesApi* | [**filesGet**](docs/FilesApi.md#filesGet) | **GET** /files | 
 *FilesApi* | [**filesIdDelete**](docs/FilesApi.md#filesIdDelete) | **DELETE** /files/{id} | 
 *FilesApi* | [**filesPost**](docs/FilesApi.md#filesPost) | **POST** /files | 
+*NumberApi* | [**numbersGet**](docs/NumberApi.md#numbersGet) | **GET** /numbers | 
 
 
 ## Documentation for Models

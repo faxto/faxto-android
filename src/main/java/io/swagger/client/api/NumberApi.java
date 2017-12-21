@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class AccountApi {
+public class NumberApi {
   String basePath = "https://fax.to/api/v2";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
@@ -56,20 +56,21 @@ public class AccountApi {
 
   /**
   * 
-  * This API get users balance. 
+  * This API get users numbers. 
    * @param apiKey API Key
+   * @param page Page to display
    * @return void
   */
-  public void balanceGet (String apiKey) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void numbersGet (String apiKey, String page) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'apiKey' is set
     if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling balanceGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling balanceGet"));
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling numbersGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling numbersGet"));
     }
 
     // create path and map variables
-    String path = "/balance";
+    String path = "/numbers";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -78,6 +79,7 @@ public class AccountApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
     queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "page", page));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -119,20 +121,20 @@ public class AccountApi {
 
       /**
    * 
-   * This API get users balance. 
-   * @param apiKey API Key
+   * This API get users numbers. 
+   * @param apiKey API Key   * @param page Page to display
   */
-  public void balanceGet (String apiKey, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void numbersGet (String apiKey, String page, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'apiKey' is set
     if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling balanceGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling balanceGet"));
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling numbersGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling numbersGet"));
     }
 
     // create path and map variables
-    String path = "/balance".replaceAll("\\{format\\}","json");
+    String path = "/numbers".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -142,6 +144,7 @@ public class AccountApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "page", page));
 
 
     String[] contentTypes = {

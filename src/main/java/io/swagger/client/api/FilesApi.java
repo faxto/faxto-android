@@ -37,7 +37,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 public class FilesApi {
-  String basePath = "https://fax.to/api/v1";
+  String basePath = "https://fax.to/api/v2";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
   public void addHeader(String key, String value) {
@@ -56,6 +56,282 @@ public class FilesApi {
     return basePath;
   }
 
+  /**
+  * 
+  * This API get clean file from document id. 
+   * @param apiKey API Key
+   * @param documentId Document ID in the fax
+   * @return void
+  */
+  public void fileCleanGet (String apiKey, String documentId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'apiKey' is set
+    if (apiKey == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling fileCleanGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling fileCleanGet"));
+    }
+    // verify the required parameter 'documentId' is set
+    if (documentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling fileCleanGet",
+        new ApiException(400, "Missing the required parameter 'documentId' when calling fileCleanGet"));
+    }
+
+    // create path and map variables
+    String path = "/file-clean";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "document_id", documentId));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * 
+   * This API get clean file from document id. 
+   * @param apiKey API Key   * @param documentId Document ID in the fax
+  */
+  public void fileCleanGet (String apiKey, String documentId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'apiKey' is set
+    if (apiKey == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling fileCleanGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling fileCleanGet"));
+    }
+    // verify the required parameter 'documentId' is set
+    if (documentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling fileCleanGet",
+        new ApiException(400, "Missing the required parameter 'documentId' when calling fileCleanGet"));
+    }
+
+    // create path and map variables
+    String path = "/file-clean".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "document_id", documentId));
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * 
+  * This API get generated preview file from document id. 
+   * @param apiKey API Key
+   * @param documentId Document ID in the fax
+   * @return void
+  */
+  public void fileGeneratePreviewGet (String apiKey, String documentId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+    // verify the required parameter 'apiKey' is set
+    if (apiKey == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling fileGeneratePreviewGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling fileGeneratePreviewGet"));
+    }
+    // verify the required parameter 'documentId' is set
+    if (documentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling fileGeneratePreviewGet",
+        new ApiException(400, "Missing the required parameter 'documentId' when calling fileGeneratePreviewGet"));
+    }
+
+    // create path and map variables
+    String path = "/file-generate-preview";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "document_id", documentId));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * 
+   * This API get generated preview file from document id. 
+   * @param apiKey API Key   * @param documentId Document ID in the fax
+  */
+  public void fileGeneratePreviewGet (String apiKey, String documentId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'apiKey' is set
+    if (apiKey == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling fileGeneratePreviewGet",
+        new ApiException(400, "Missing the required parameter 'apiKey' when calling fileGeneratePreviewGet"));
+    }
+    // verify the required parameter 'documentId' is set
+    if (documentId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling fileGeneratePreviewGet",
+        new ApiException(400, "Missing the required parameter 'documentId' when calling fileGeneratePreviewGet"));
+    }
+
+    // create path and map variables
+    String path = "/file-generate-preview".replaceAll("\\{format\\}","json");
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "document_id", documentId));
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
   /**
   * 
   * This API lists all the files 
@@ -322,9 +598,10 @@ public class FilesApi {
   * This API allows uploading of a single file. 
    * @param apiKey API Key
    * @param file PDF file to upload
+   * @param addRemoteFile Given the remote file url
    * @return File
   */
-  public File filesPost (String apiKey, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public File filesPost (String apiKey, File file, String addRemoteFile) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'apiKey' is set
     if (apiKey == null) {
@@ -358,10 +635,14 @@ public class FilesApi {
       if (file != null) {
         localVarBuilder.addBinaryBody("file", file);
       }
+      if (addRemoteFile != null) {
+        localVarBuilder.addTextBody("AddRemoteFile", ApiInvoker.parameterToString(addRemoteFile), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
+      formParams.put("AddRemoteFile", ApiInvoker.parameterToString(addRemoteFile));
     }
 
     String[] authNames = new String[] {  };
@@ -393,9 +674,9 @@ public class FilesApi {
       /**
    * 
    * This API allows uploading of a single file. 
-   * @param apiKey API Key   * @param file PDF file to upload
+   * @param apiKey API Key   * @param file PDF file to upload   * @param addRemoteFile Given the remote file url
   */
-  public void filesPost (String apiKey, File file, final Response.Listener<File> responseListener, final Response.ErrorListener errorListener) {
+  public void filesPost (String apiKey, File file, String addRemoteFile, final Response.Listener<File> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'apiKey' is set
@@ -435,12 +716,17 @@ public class FilesApi {
         localVarBuilder.addBinaryBody("file", file);
       }
       
+      if (addRemoteFile != null) {
+        localVarBuilder.addTextBody("AddRemoteFile", ApiInvoker.parameterToString(addRemoteFile), ApiInvoker.TEXT_PLAIN_UTF8);
+      }
+      
 
       HttpEntity httpEntity = localVarBuilder.build();
       postBody = httpEntity;
     } else {
       // normal form params
       
+formParams.put("AddRemoteFile", ApiInvoker.parameterToString(addRemoteFile));
     }
 
     String[] authNames = new String[] {  };

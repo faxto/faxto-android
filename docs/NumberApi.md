@@ -1,31 +1,32 @@
-# AccountApi
+# NumberApi
 
 All URIs are relative to *https://fax.to/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**balanceGet**](AccountApi.md#balanceGet) | **GET** /balance | 
+[**numbersGet**](NumberApi.md#numbersGet) | **GET** /numbers | 
 
 
-<a name="balanceGet"></a>
-# **balanceGet**
-> balanceGet(apiKey)
+<a name="numbersGet"></a>
+# **numbersGet**
+> numbersGet(apiKey, page)
 
 
 
-This API get users balance. 
+This API get users numbers. 
 
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.api.AccountApi;
+//import io.swagger.client.api.NumberApi;
 
-AccountApi apiInstance = new AccountApi();
+NumberApi apiInstance = new NumberApi();
 String apiKey = "apiKey_example"; // String | API Key
+String page = "page_example"; // String | Page to display
 try {
-    apiInstance.balanceGet(apiKey);
+    apiInstance.numbersGet(apiKey, page);
 } catch (ApiException e) {
-    System.err.println("Exception when calling AccountApi#balanceGet");
+    System.err.println("Exception when calling NumberApi#numbersGet");
     e.printStackTrace();
 }
 ```
@@ -35,6 +36,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiKey** | **String**| API Key |
+ **page** | **String**| Page to display | [optional]
 
 ### Return type
 

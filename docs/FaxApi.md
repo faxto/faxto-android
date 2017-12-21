@@ -1,13 +1,15 @@
 # FaxApi
 
-All URIs are relative to *https://fax.to/api/v1*
+All URIs are relative to *https://fax.to/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**faxDocumentIdCostsGet**](FaxApi.md#faxDocumentIdCostsGet) | **GET** /fax/{document_id}/costs | 
-[**faxHistoryGet**](FaxApi.md#faxHistoryGet) | **GET** /fax-history | 
+[**faxGet**](FaxApi.md#faxGet) | **GET** /fax | 
 [**faxJobIdStatusGet**](FaxApi.md#faxJobIdStatusGet) | **GET** /fax/{job_id}/status | 
-[**faxPost**](FaxApi.md#faxPost) | **POST** /fax | 
+[**incomingFaxesGet**](FaxApi.md#incomingFaxesGet) | **GET** /incoming-faxes | 
+[**incomingFaxesNumberGet**](FaxApi.md#incomingFaxesNumberGet) | **GET** /incoming-faxes/{number} | 
+[**provisionNumbersGet**](FaxApi.md#provisionNumbersGet) | **GET** /provision-numbers | 
 
 
 <a name="faxDocumentIdCostsGet"></a>
@@ -56,9 +58,9 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="faxHistoryGet"></a>
-# **faxHistoryGet**
-> faxHistoryGet(apiKey, limit, page)
+<a name="faxGet"></a>
+# **faxGet**
+> faxGet(apiKey, limit, page)
 
 
 
@@ -74,9 +76,9 @@ String apiKey = "apiKey_example"; // String | API Key
 String limit = "limit_example"; // String | Number of records to return
 String page = "page_example"; // String | Page to display
 try {
-    apiInstance.faxHistoryGet(apiKey, limit, page);
+    apiInstance.faxGet(apiKey, limit, page);
 } catch (ApiException e) {
-    System.err.println("Exception when calling FaxApi#faxHistoryGet");
+    System.err.println("Exception when calling FaxApi#faxGet");
     e.printStackTrace();
 }
 ```
@@ -146,13 +148,13 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: Not defined
 
-<a name="faxPost"></a>
-# **faxPost**
-> faxPost(apiKey, faxNumber, documentId, tsiNumber, file, deleteFile)
+<a name="incomingFaxesGet"></a>
+# **incomingFaxesGet**
+> incomingFaxesGet(apiKey)
 
 
 
-This API send the fax. When we send fax using API, Fax.to send a POST to the Callback URL you specified in https://fax.to/member/api/live. Fax.to send POST data with the following information fax_job_id, status and message. 
+This API get faxes . 
 
 ### Example
 ```java
@@ -161,15 +163,10 @@ This API send the fax. When we send fax using API, Fax.to send a POST to the Cal
 
 FaxApi apiInstance = new FaxApi();
 String apiKey = "apiKey_example"; // String | API Key
-String faxNumber = "faxNumber_example"; // String | Fax Number
-Integer documentId = 56; // Integer | Document id. If you want to use existing document you need to specify the document_id
-String tsiNumber = "tsiNumber_example"; // String | If we want to to change the text or number that appear on 'from' or 'sender' of the fax
-File file = new File("/path/to/file.txt"); // File | PDF file to upload
-Integer deleteFile = 56; // Integer | Whether to delete file after fax transaction. (put 1 to delete)
 try {
-    apiInstance.faxPost(apiKey, faxNumber, documentId, tsiNumber, file, deleteFile);
+    apiInstance.incomingFaxesGet(apiKey);
 } catch (ApiException e) {
-    System.err.println("Exception when calling FaxApi#faxPost");
+    System.err.println("Exception when calling FaxApi#incomingFaxesGet");
     e.printStackTrace();
 }
 ```
@@ -179,11 +176,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apiKey** | **String**| API Key |
- **faxNumber** | **String**| Fax Number |
- **documentId** | **Integer**| Document id. If you want to use existing document you need to specify the document_id | [optional]
- **tsiNumber** | **String**| If we want to to change the text or number that appear on &#39;from&#39; or &#39;sender&#39; of the fax | [optional]
- **file** | **File**| PDF file to upload | [optional]
- **deleteFile** | **Integer**| Whether to delete file after fax transaction. (put 1 to delete) | [optional]
 
 ### Return type
 
@@ -195,6 +187,94 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="incomingFaxesNumberGet"></a>
+# **incomingFaxesNumberGet**
+> incomingFaxesNumberGet(apiKey, number)
+
+
+
+This API get faxes  by number. 
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.api.FaxApi;
+
+FaxApi apiInstance = new FaxApi();
+String apiKey = "apiKey_example"; // String | API Key
+String number = "number_example"; // String | Number in the fax
+try {
+    apiInstance.incomingFaxesNumberGet(apiKey, number);
+} catch (ApiException e) {
+    System.err.println("Exception when calling FaxApi#incomingFaxesNumberGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | **String**| API Key |
+ **number** | **String**| Number in the fax |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+<a name="provisionNumbersGet"></a>
+# **provisionNumbersGet**
+> provisionNumbersGet(apiKey, limit)
+
+
+
+This API get Provision numbers. 
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.api.FaxApi;
+
+FaxApi apiInstance = new FaxApi();
+String apiKey = "apiKey_example"; // String | API Key
+String limit = "limit_example"; // String | Limit to display
+try {
+    apiInstance.provisionNumbersGet(apiKey, limit);
+} catch (ApiException e) {
+    System.err.println("Exception when calling FaxApi#provisionNumbersGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | **String**| API Key |
+ **limit** | **String**| Limit to display | [optional]
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 

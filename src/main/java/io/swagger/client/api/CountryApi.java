@@ -23,7 +23,6 @@ import java.util.*;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import java.math.BigDecimal;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
@@ -35,7 +34,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
-public class FaxApi {
+public class CountryApi {
   String basePath = "https://fax.to/api/v2";
   ApiInvoker apiInvoker = ApiInvoker.getInstance();
 
@@ -57,32 +56,26 @@ public class FaxApi {
 
   /**
   * 
-  * This API get the cost of a sending fax. 
-   * @param apiKey API Key
-   * @param faxNumber Fax Number
-   * @param documentId id of the file / document_id
+  * This API get areacodes . 
+   * @param countryCode countryCode in the Country
+   * @param stateId stateId in the Country
    * @return void
   */
-  public void faxDocumentIdCostsGet (String apiKey, String faxNumber, BigDecimal documentId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void areacodesCountryCodeStateIdGet (String countryCode, String stateId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxDocumentIdCostsGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling areacodesCountryCodeStateIdGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling areacodesCountryCodeStateIdGet"));
     }
-    // verify the required parameter 'faxNumber' is set
-    if (faxNumber == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'faxNumber' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'faxNumber' when calling faxDocumentIdCostsGet"));
-    }
-    // verify the required parameter 'documentId' is set
-    if (documentId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'documentId' when calling faxDocumentIdCostsGet"));
+    // verify the required parameter 'stateId' is set
+    if (stateId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'stateId' when calling areacodesCountryCodeStateIdGet",
+        new ApiException(400, "Missing the required parameter 'stateId' when calling areacodesCountryCodeStateIdGet"));
     }
 
     // create path and map variables
-    String path = "/fax/{document_id}/costs".replaceAll("\\{" + "document_id" + "\\}", apiInvoker.escapeString(documentId.toString()));
+    String path = "/areacodes/{countryCode}/{stateId}".replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString())).replaceAll("\\{" + "stateId" + "\\}", apiInvoker.escapeString(stateId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -90,8 +83,6 @@ public class FaxApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "fax_number", faxNumber));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -133,30 +124,25 @@ public class FaxApi {
 
       /**
    * 
-   * This API get the cost of a sending fax. 
-   * @param apiKey API Key   * @param faxNumber Fax Number   * @param documentId id of the file / document_id
+   * This API get areacodes . 
+   * @param countryCode countryCode in the Country   * @param stateId stateId in the Country
   */
-  public void faxDocumentIdCostsGet (String apiKey, String faxNumber, BigDecimal documentId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void areacodesCountryCodeStateIdGet (String countryCode, String stateId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxDocumentIdCostsGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling areacodesCountryCodeStateIdGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling areacodesCountryCodeStateIdGet"));
     }
-    // verify the required parameter 'faxNumber' is set
-    if (faxNumber == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'faxNumber' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'faxNumber' when calling faxDocumentIdCostsGet"));
-    }
-    // verify the required parameter 'documentId' is set
-    if (documentId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'documentId' when calling faxDocumentIdCostsGet",
-        new ApiException(400, "Missing the required parameter 'documentId' when calling faxDocumentIdCostsGet"));
+    // verify the required parameter 'stateId' is set
+    if (stateId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'stateId' when calling areacodesCountryCodeStateIdGet",
+        new ApiException(400, "Missing the required parameter 'stateId' when calling areacodesCountryCodeStateIdGet"));
     }
 
     // create path and map variables
-    String path = "/fax/{document_id}/costs".replaceAll("\\{format\\}","json").replaceAll("\\{" + "document_id" + "\\}", apiInvoker.escapeString(documentId.toString()));
+    String path = "/areacodes/{countryCode}/{stateId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString())).replaceAll("\\{" + "stateId" + "\\}", apiInvoker.escapeString(stateId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -165,8 +151,6 @@ public class FaxApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "fax_number", faxNumber));
 
 
     String[] contentTypes = {
@@ -206,22 +190,38 @@ public class FaxApi {
   }
   /**
   * 
-  * This API get all fax history. 
-   * @param apiKey API Key
-   * @param limit Number of records to return
-   * @param page Page to display
+  * This API didgroups countryCode. 
+   * @param countryCode countryCode in the Country
+   * @param didGroupIds didGroupId in the Country
+   * @param stateId stateId in the Country
+   * @param cityNamePattern cityNamePattern in the Country
    * @return void
   */
-  public void faxGet (String apiKey, String limit, String page) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void countriesCountryCodeDidgroupsGet (String countryCode, String didGroupIds, String stateId, String cityNamePattern) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'didGroupIds' is set
+    if (didGroupIds == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'didGroupIds' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'didGroupIds' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'stateId' is set
+    if (stateId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'stateId' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'stateId' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'cityNamePattern' is set
+    if (cityNamePattern == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cityNamePattern' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'cityNamePattern' when calling countriesCountryCodeDidgroupsGet"));
     }
 
     // create path and map variables
-    String path = "/fax";
+    String path = "/countries/{countryCode}/didgroups".replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -229,9 +229,9 @@ public class FaxApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "page", page));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "didGroupIds", didGroupIds));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "stateId", stateId));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "cityNamePattern", cityNamePattern));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -273,20 +273,35 @@ public class FaxApi {
 
       /**
    * 
-   * This API get all fax history. 
-   * @param apiKey API Key   * @param limit Number of records to return   * @param page Page to display
+   * This API didgroups countryCode. 
+   * @param countryCode countryCode in the Country   * @param didGroupIds didGroupId in the Country   * @param stateId stateId in the Country   * @param cityNamePattern cityNamePattern in the Country
   */
-  public void faxGet (String apiKey, String limit, String page, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void countriesCountryCodeDidgroupsGet (String countryCode, String didGroupIds, String stateId, String cityNamePattern, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'didGroupIds' is set
+    if (didGroupIds == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'didGroupIds' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'didGroupIds' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'stateId' is set
+    if (stateId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'stateId' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'stateId' when calling countriesCountryCodeDidgroupsGet"));
+    }
+    // verify the required parameter 'cityNamePattern' is set
+    if (cityNamePattern == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'cityNamePattern' when calling countriesCountryCodeDidgroupsGet",
+        new ApiException(400, "Missing the required parameter 'cityNamePattern' when calling countriesCountryCodeDidgroupsGet"));
     }
 
     // create path and map variables
-    String path = "/fax".replaceAll("\\{format\\}","json");
+    String path = "/countries/{countryCode}/didgroups".replaceAll("\\{format\\}","json").replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -295,9 +310,9 @@ public class FaxApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "page", page));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "didGroupIds", didGroupIds));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "stateId", stateId));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "cityNamePattern", cityNamePattern));
 
 
     String[] contentTypes = {
@@ -337,26 +352,20 @@ public class FaxApi {
   }
   /**
   * 
-  * This API get the status of the fax. 
-   * @param apiKey API Key
-   * @param jobId id of the fax job
+  * This API didgroups provision. 
+   * @param didGroupId didGroupId in the Country
    * @return void
   */
-  public void faxJobIdStatusGet (String apiKey, BigDecimal jobId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void countriesDidgroupsDidGroupIdProvisionPost (String didGroupId) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxJobIdStatusGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxJobIdStatusGet"));
-    }
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling faxJobIdStatusGet",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling faxJobIdStatusGet"));
+    // verify the required parameter 'didGroupId' is set
+    if (didGroupId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'didGroupId' when calling countriesDidgroupsDidGroupIdProvisionPost",
+        new ApiException(400, "Missing the required parameter 'didGroupId' when calling countriesDidgroupsDidGroupIdProvisionPost"));
     }
 
     // create path and map variables
-    String path = "/fax/{job_id}/status".replaceAll("\\{" + "job_id" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/countries/didgroups/{didGroupId}/provision".replaceAll("\\{" + "didGroupId" + "\\}", apiInvoker.escapeString(didGroupId.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -364,7 +373,123 @@ public class FaxApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
+    String[] contentTypes = {
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return ;
+      } else {
+         return ;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * 
+   * This API didgroups provision. 
+   * @param didGroupId didGroupId in the Country
+  */
+  public void countriesDidgroupsDidGroupIdProvisionPost (String didGroupId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = null;
+
+    // verify the required parameter 'didGroupId' is set
+    if (didGroupId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'didGroupId' when calling countriesDidgroupsDidGroupIdProvisionPost",
+        new ApiException(400, "Missing the required parameter 'didGroupId' when calling countriesDidgroupsDidGroupIdProvisionPost"));
+    }
+
+    // create path and map variables
+    String path = "/countries/didgroups/{didGroupId}/provision".replaceAll("\\{format\\}","json").replaceAll("\\{" + "didGroupId" + "\\}", apiInvoker.escapeString(didGroupId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] {  };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+              responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * 
+  * This API get countries. 
+   * @return void
+  */
+  public void countriesGet () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = null;
+
+    // create path and map variables
+    String path = "/countries";
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -406,25 +531,15 @@ public class FaxApi {
 
       /**
    * 
-   * This API get the status of the fax. 
-   * @param apiKey API Key   * @param jobId id of the fax job
+   * This API get countries. 
+
   */
-  public void faxJobIdStatusGet (String apiKey, BigDecimal jobId, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void countriesGet (final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling faxJobIdStatusGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling faxJobIdStatusGet"));
-    }
-    // verify the required parameter 'jobId' is set
-    if (jobId == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'jobId' when calling faxJobIdStatusGet",
-        new ApiException(400, "Missing the required parameter 'jobId' when calling faxJobIdStatusGet"));
-    }
 
     // create path and map variables
-    String path = "/fax/{job_id}/status".replaceAll("\\{format\\}","json").replaceAll("\\{" + "job_id" + "\\}", apiInvoker.escapeString(jobId.toString()));
+    String path = "/countries".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -433,7 +548,6 @@ public class FaxApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
 
 
     String[] contentTypes = {
@@ -473,20 +587,20 @@ public class FaxApi {
   }
   /**
   * 
-  * This API get faxes . 
-   * @param apiKey API Key
+  * This API get States . 
+   * @param countryCode countryCode in the Country
    * @return void
   */
-  public void incomingFaxesGet (String apiKey) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public void statesCountryCodeGet (String countryCode) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling incomingFaxesGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling incomingFaxesGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling statesCountryCodeGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling statesCountryCodeGet"));
     }
 
     // create path and map variables
-    String path = "/incoming-faxes";
+    String path = "/states/{countryCode}".replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -494,7 +608,6 @@ public class FaxApi {
     Map<String, String> headerParams = new HashMap<String, String>();
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
     String[] contentTypes = {
     };
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
@@ -536,20 +649,20 @@ public class FaxApi {
 
       /**
    * 
-   * This API get faxes . 
-   * @param apiKey API Key
+   * This API get States . 
+   * @param countryCode countryCode in the Country
   */
-  public void incomingFaxesGet (String apiKey, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+  public void statesCountryCodeGet (String countryCode, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling incomingFaxesGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling incomingFaxesGet"));
+    // verify the required parameter 'countryCode' is set
+    if (countryCode == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'countryCode' when calling statesCountryCodeGet",
+        new ApiException(400, "Missing the required parameter 'countryCode' when calling statesCountryCodeGet"));
     }
 
     // create path and map variables
-    String path = "/incoming-faxes".replaceAll("\\{format\\}","json");
+    String path = "/states/{countryCode}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "countryCode" + "\\}", apiInvoker.escapeString(countryCode.toString()));
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -558,271 +671,6 @@ public class FaxApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
 
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-
-
-    String[] contentTypes = {
-      
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] {  };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * 
-  * This API get faxes  by number. 
-   * @param apiKey API Key
-   * @param number Number in the fax
-   * @return void
-  */
-  public void incomingFaxesNumberGet (String apiKey, String number) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling incomingFaxesNumberGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling incomingFaxesNumberGet"));
-    }
-    // verify the required parameter 'number' is set
-    if (number == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'number' when calling incomingFaxesNumberGet",
-        new ApiException(400, "Missing the required parameter 'number' when calling incomingFaxesNumberGet"));
-    }
-
-    // create path and map variables
-    String path = "/incoming-faxes/{number}".replaceAll("\\{" + "number" + "\\}", apiInvoker.escapeString(number.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    String[] contentTypes = {
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] {  };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return ;
-      } else {
-         return ;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * 
-   * This API get faxes  by number. 
-   * @param apiKey API Key   * @param number Number in the fax
-  */
-  public void incomingFaxesNumberGet (String apiKey, String number, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
-
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling incomingFaxesNumberGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling incomingFaxesNumberGet"));
-    }
-    // verify the required parameter 'number' is set
-    if (number == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'number' when calling incomingFaxesNumberGet",
-        new ApiException(400, "Missing the required parameter 'number' when calling incomingFaxesNumberGet"));
-    }
-
-    // create path and map variables
-    String path = "/incoming-faxes/{number}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "number" + "\\}", apiInvoker.escapeString(number.toString()));
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-
-
-    String[] contentTypes = {
-      
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      
-
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-          }
-
-    String[] authNames = new String[] {  };
-
-    try {
-      apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames,
-        new Response.Listener<String>() {
-          @Override
-          public void onResponse(String localVarResponse) {
-              responseListener.onResponse(localVarResponse);
-          }
-      }, new Response.ErrorListener() {
-          @Override
-          public void onErrorResponse(VolleyError error) {
-            errorListener.onErrorResponse(error);
-          }
-      });
-    } catch (ApiException ex) {
-      errorListener.onErrorResponse(new VolleyError(ex));
-    }
-  }
-  /**
-  * 
-  * This API get Provision numbers. 
-   * @param apiKey API Key
-   * @param limit Limit to display
-   * @return void
-  */
-  public void provisionNumbersGet (String apiKey, String limit) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = null;
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling provisionNumbersGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling provisionNumbersGet"));
-    }
-
-    // create path and map variables
-    String path = "/provision-numbers";
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
-    String[] contentTypes = {
-    };
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-
-    if (contentType.startsWith("multipart/form-data")) {
-      // file uploading
-      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
-      HttpEntity httpEntity = localVarBuilder.build();
-      postBody = httpEntity;
-    } else {
-      // normal form params
-    }
-
-    String[] authNames = new String[] {  };
-
-    try {
-      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
-      if (localVarResponse != null) {
-         return ;
-      } else {
-         return ;
-      }
-    } catch (ApiException ex) {
-       throw ex;
-    } catch (InterruptedException ex) {
-       throw ex;
-    } catch (ExecutionException ex) {
-      if (ex.getCause() instanceof VolleyError) {
-        VolleyError volleyError = (VolleyError)ex.getCause();
-        if (volleyError.networkResponse != null) {
-          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
-        }
-      }
-      throw ex;
-    } catch (TimeoutException ex) {
-      throw ex;
-    }
-  }
-
-      /**
-   * 
-   * This API get Provision numbers. 
-   * @param apiKey API Key   * @param limit Limit to display
-  */
-  public void provisionNumbersGet (String apiKey, String limit, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = null;
-
-    // verify the required parameter 'apiKey' is set
-    if (apiKey == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'apiKey' when calling provisionNumbersGet",
-        new ApiException(400, "Missing the required parameter 'apiKey' when calling provisionNumbersGet"));
-    }
-
-    // create path and map variables
-    String path = "/provision-numbers".replaceAll("\\{format\\}","json");
-
-    // query params
-    List<Pair> queryParams = new ArrayList<Pair>();
-    // header params
-    Map<String, String> headerParams = new HashMap<String, String>();
-    // form params
-    Map<String, String> formParams = new HashMap<String, String>();
-
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "api_key", apiKey));
-    queryParams.addAll(ApiInvoker.parameterToPairs("", "limit", limit));
 
 
     String[] contentTypes = {
